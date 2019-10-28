@@ -2,16 +2,24 @@ class Juego {
     constructor() {
         this.TIA_equipo = TIA_array;
         this.AMPA_equipo = AMPA_array;
-        this.jugadores = [jugador_1, jugador_2];
+        this.jugadores = [Jugador_1, Jugador_2];
         this.turno = 0;
-        this.gana1 = false;
-        this.gana2 = false;
+        this.ultimJug1 = [];
+        this.ultimJug2 = [];
+        this.gana = '';
     }
+
     evento_btn_siguiente(btn, siguienteVista) {
         document.getElementById(btn).setAttribute('style', atrNone);
         let seleccionar = document.getElementById(siguienteVista);
         seleccionar.removeAttribute('style');
     };
+    // evento_reinicio(){
+    //     let reini = document.getElementById('reinicio');
+    //     reini.addEventListener('click', ()=>{
+    //         location.reload(true);
+    //     })
+    // };
     rellenaDivs(personajesArray, data_id, sufijoclase) {
         for (let i = 0; i < personajesArray.length; i++) {
             document.getElementById(data_id).innerHTML += `<div class="divCreado ${sufijoclase}" data-name="${i}" style="background-image: url(${personajesArray[i].Imagen})" ></div>`;
@@ -58,17 +66,17 @@ class Juego {
         }
     };
     comprueba_equipos() {
-        jugador_1.Equipo = [];
-        jugador_2.Equipo = [];
-        this.formaEquipos('persoSeleccionados TIA', jugador_1.Equipo)
-        this.formaEquipos('persoSeleccionados AMPA', jugador_2.Equipo)
+        Jugador_1.Equipo = [];
+        Jugador_2.Equipo = [];
+        this.formaEquipos('persoSeleccionados TIA', Jugador_1.Equipo)
+        this.formaEquipos('persoSeleccionados AMPA', Jugador_2.Equipo)
 
-        if (jugador_1.Equipo.length < 3 || jugador_2.Equipo.length < 3) {
+        if (Jugador_1.Equipo.length < 3 || Jugador_2.Equipo.length < 3) {
 
-            if (jugador_1.Equipo.length < 3) {
+            if (Jugador_1.Equipo.length < 3) {
                 alert('JUGADOR 1, SELECCIONA TUS PERSONAJES');
             };
-            if (jugador_2.Equipo.length < 3) {
+            if (Jugador_2.Equipo.length < 3) {
                 alert('JUGADOR 2, SELECCIONA TUS PERSONAJES');
             };
         } else {
@@ -76,56 +84,15 @@ class Juego {
             document.getElementById('seleccion').setAttribute('style', atrNone);
             let seleccionar = document.getElementById('batalla');
             seleccionar.removeAttribute('style');
-            this.rellenaDivsLucha(this.jugadores[0].Equipo, 'luchaTIA', 'jugador_1', jugador_1.Equipo, this.TIA_equipo);
-            this.rellenaDivsLucha(this.jugadores[1].Equipo, 'luchaAMPA', 'jugador_2', jugador_2.Equipo, this.AMPA_equipo);
-            let sig = document.getElementById('siguiente');
-            sig.addEventListener('click', () => {
-                lucha();
-            });
+            this.rellenaDivsLucha(this.jugadores[0].Equipo, 'luchaTIA', 'Jugador_1', Jugador_1.Equipo, this.TIA_equipo);
+            this.rellenaDivsLucha(this.jugadores[1].Equipo, 'luchaAMPA', 'Jugador_2', Jugador_2.Equipo, this.AMPA_equipo);
         }
     };
+    lucha() {
 
-}
 
-//INSTANCIAMOS JUEGO
-let Juego_1 = new Juego();
-// var gana1 = false;
-// var gana2 = false;
-
-//COMENZAMOS EL JUEGO_1
-const atrNone = 'display: none!important;';
-
-//----- EVENTO PARA SUIGUIENTE PANTALLA
-let btnInicio = document.getElementById('boton-inicio');
-btnInicio.addEventListener('click', () => {
-    Juego_1.evento_btn_siguiente('inicio', 'seleccion');
-});
-
-//RELLENAMOS CONTENEDORES CON PERSONAJES
-Juego_1.rellenaDivs(Juego_1.TIA_equipo, 'TIA', 'TIA');
-Juego_1.rellenaDivs(Juego_1.AMPA_equipo, 'AMPA', 'AMPA');
-
-//SELECCIONAMOS PERSONAJES
-let pers_TIA = document.getElementsByClassName('divCreado TIA');
-let pers_AMPA = document.getElementsByClassName('divCreado AMPA');
-Juego_1.evento_selec_personajes(pers_TIA, 'persoSeleccionados TIA');
-Juego_1.evento_selec_personajes(pers_AMPA, 'persoSeleccionados AMPA');
-
-//DESELECCION DE PERSONAJES
-let deselec = document.getElementsByClassName('persoSeleccionados');
-Juego_1.deseleccion_pers(deselec);
-
-// EVENTO PARA PASAR SIGUIENTE VISTA Y COMPROBAR EQUIPOPS COMPLETOS.
-let btnComenzar = document.getElementById('comenzar');
-btnComenzar.addEventListener('click', () => {
-    Juego_1.comprueba_equipos();
-})
-
-function lucha() {
-    do {
-
-        let eTIA = document.getElementsByClassName('divCreado jugador_1');
-        let eAMPA = document.getElementsByClassName('divCreado jugador_2');
+        let eTIA = document.getElementsByClassName('divCreado Jugador_1');
+        let eAMPA = document.getElementsByClassName('divCreado Jugador_2');
         for (let i = 0; i < eTIA.length; i++) {
             let dataNameTIA = eTIA[i].getAttribute('data-name');
             let styleTIA = eTIA[i].getAttribute('style');
@@ -156,41 +123,92 @@ function lucha() {
         let perEnLuch1 = document.getElementById('luchando1').getAttribute('data-name');
         let perEnLuch2 = document.getElementById('luchando2').getAttribute('data-name');
 
-        jugador_1.jLuchando = TIA_array[perEnLuch1];
-        jugador_2.jLuchando = AMPA_array[perEnLuch2];
+        Jugador_1.jLuchando = TIA_array[perEnLuch1];
+        this.ultimJug1 = TIA_array[this.jugadores[0].Equipo[2]];
+        Jugador_2.jLuchando = AMPA_array[perEnLuch2];
+        this.ultimJug2 = AMPA_array[this.jugadores[1].Equipo[2]];
 
 
         if (Juego_1.turno % 2) {
-            jugador_2.atacarA1();
-            if (jugador_1.jLuchando.Vida <= 0) {
-                jugador_1.jLuchando.Vida = 0;
+            Jugador_2.atacarA1();
+            if (Jugador_1.jLuchando.Vida <= 0) {
+                Jugador_1.jLuchando.Vida = 0;
                 document.getElementById('puntua1').innerHTML = `<p style="font-size: 1.2rem">Pierden los buenos...</p>`;
 
 
             } else {
-                document.getElementById('puntua1').innerHTML = jugador_1.jLuchando.Vida;
+                document.getElementById('puntua1').innerHTML = Jugador_1.jLuchando.Vida;
             }
 
         } else {
-            jugador_1.atacarA2();
-            if (jugador_2.jLuchando.Vida <= 0) {
-                jugador_2.jLuchando.Vida = 0;
+            Jugador_1.atacarA2();
+            if (Jugador_2.jLuchando.Vida <= 0) {
+                Jugador_2.jLuchando.Vida = 0;
                 document.getElementById('puntua2').innerHTML = `<p style="font-size: 1.2rem"> Pierden los malos....</p>`;
 
             } else {
 
-                document.getElementById('puntua2').innerHTML = jugador_2.jLuchando.Vida;
+                document.getElementById('puntua2').innerHTML = Jugador_2.jLuchando.Vida;
             }
         }
-
-        Juego_1.turno++;
-
-
-
-    } while (Juego_1.turno < 15);
+        if ((Juego_1.ultimJug1.Vida < 0) || (Juego_1.ultimJug2.Vida < 0)) { this.gana = true }
+        this.turno++;
 
 
+
+
+    }
 }
+
+//INSTANCIAMOS JUEGO
+let Juego_1 = new Juego();
+//COMENZAMOS EL JUEGO_1
+const atrNone = 'display: none!important;';
+
+//----- EVENTO PARA SUIGUIENTE PANTALLA
+let btnInicio = document.getElementById('boton-inicio');
+btnInicio.addEventListener('click', () => {
+    Juego_1.evento_btn_siguiente('inicio', 'seleccion');
+});
+
+//RELLENAMOS CONTENEDORES CON PERSONAJES
+Juego_1.rellenaDivs(Juego_1.TIA_equipo, 'TIA', 'TIA');
+Juego_1.rellenaDivs(Juego_1.AMPA_equipo, 'AMPA', 'AMPA');
+
+//SELECCIONAMOS PERSONAJES
+let pers_TIA = document.getElementsByClassName('divCreado TIA');
+let pers_AMPA = document.getElementsByClassName('divCreado AMPA');
+Juego_1.evento_selec_personajes(pers_TIA, 'persoSeleccionados TIA');
+Juego_1.evento_selec_personajes(pers_AMPA, 'persoSeleccionados AMPA');
+
+//DESELECCION DE PERSONAJES
+let deselec = document.getElementsByClassName('persoSeleccionados');
+Juego_1.deseleccion_pers(deselec);
+
+// EVENTO PARA PASAR SIGUIENTE VISTA Y COMPROBAR EQUIPOPS COMPLETOS.
+let btnComenzar = document.getElementById('comenzar');
+btnComenzar.addEventListener('click', () => {
+    Juego_1.comprueba_equipos();
+})
+let sig = document.getElementById('siguiente');
+sig.addEventListener('click', () => {
+
+    Juego_1.lucha();
+
+
+    if (Juego_1.gana == true) {
+        document.getElementById('siguiente').setAttribute('style', atrNone);
+        console.log('EUREKA');
+        document.getElementById('extra').innerHTML = `<button type="button" class="btn btn-success pl-5 pr-5 pt-1 pb-1" id="reinicio" >volver a jugar</button>`;
+        let reini = document.getElementById('reinicio');
+        reini.addEventListener('click', () => {
+            location.reload(true);
+        })
+    }
+});
+
+
+
 
 
 
