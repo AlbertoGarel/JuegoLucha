@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta http-equiv="ScreenOrientation" content="autoRotate:disabled">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Juego</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./bootstrap/bootcss/bootstrap.min.css">
+    <!-- styles -->
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+    <article id="inicio" class="vh">
+        <div class=" w-100 h-100">
+            <!-- <h1>blablablablablablablablabababla</h1> -->
+            <button type='button' id="boton-inicio" class="btn btn-warning absoluto2">Jugar</button>
+        </div>
+    </article>
+
+    <!-- -------------------------------------------- FIN INICIO E INICIO SELECCIONAR-->
+    <article id="seleccion" style="display: none;">
+        <div class="container-fluid pr-0 pl-0">
+            <div class="row">
+                <div class="col-6" id="cont-izda">
+                    <!-- PARA JUGADOR 1 -->
+                    <div class="vh10 d-flex justify-content-center align-items-center" id="tituloCons">
+                        <h5 class=""> La T.I.A</h5>
+                        <button type="button" class="btn btn-success" id="comenzar" class="absolute">comenzar</button>
+                    </div>
+                    <div class="vh70 d-flex justify-content-around align-items-center flex-wrap" id="TIA">
+
+                    </div>
+                    <div class="vh20 d-flex justify-content-around align-items-center  seleccionados">
+                        <div class="persoSeleccionados TIA shadow" id="perso_1"></div>
+                        <div class="persoSeleccionados TIA shadow" id="perso_2"></div>
+                        <div class="persoSeleccionados TIA shadow" id="perso_3"></div>
+                    </div>
+                </div>
+                <div class="col-6" id="coment">
+                    <!-- PARA JUGADOR 2 -->
+                    <div class="vh10 d-flex justify-content-center align-items-center" id="tituloCons">
+                        <h5 class="">A.M.P.A.</h5>
+                    </div>
+                    <div class="vh70 d-flex justify-content-around align-items-center flex-wrap" id="AMPA">
+
+                    </div>
+                    <div class="vh20 d-flex justify-content-around align-items-center  seleccionados">
+                        <div class="persoSeleccionados AMPA shadow" id="perso_1"></div>
+                        <div class="persoSeleccionados AMPA shadow" id="perso_2"></div>
+                        <div class="persoSeleccionados AMPA shadow" id="perso_3"></div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- <button id="comenzar" class="absoluto btn">comenzar</button> -->
+        <img src="./images/fondos/vsr.png" id="vsimage" class="absoluto img-fluid" alt="">
+        <!-- ------------INICIO MODAL--------------------- -->
+        <!-- Modal -->
+        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-titulo">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="modal-cuerpo">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="boton-modal" class="btn btn-secondary"
+                            data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <!-- ----------------FIN MODAL--------------------------- -->
+    </article>
+    <!-- -------------------------------------------- FIN SELECCIONAR E INICIO BATALLA-->
+    <article id="batalla" class="vh" style="display: none;">
+        <div class="container-fluid pr-0 pl-0">
+            <div class="row">
+                <div class="col-4 ">
+                    <!-- PARA JUGADOR 1 -->
+                    <div class=" d-flex justify-content-center align-items-center titulo bg-transparent">
+                        <h5 class="">La T.I.A</h5>
+                    </div>
+
+                    <div class=" d-flex flex-direction-column justify-content-center flex-wrap central">
+                        <!-- <h1 class="text-light">pantalla de lucha</h1> -->
+                        <div class="d-flex justify-content-around align-items-center TIA equipo" id="luchaTIA"></div>
+                        <div class="jugadorLuchando jugador_1 " id="luchando1"></div>
+                    </div>
+
+                    <div id="puntua1" class="d-flex justify-content-center align-items-center vh20r">
+                        
+                    </div>
+                </div>
+                <div class="col-4 " id="">
+                    <!-- MOSTRAR ARMA -->
+                    <div class=" d-flex justify-content-center justify-content-center align-items-center titulo bg-transparent">
+                           
+                            <button type="button" class="btn btn-success pl-5 pr-5 pt-1 pb-1" id="siguiente">comienza</button>
+                    </div>
+
+                    <div class=" flex-direction-column flex-wrap central" id="centro">
+                        <!-- <h1 class="text-light">pantalla de lucha</h1> -->
+                        <div class="equipo" class="d-flex justify-content-center align-items-center"></div>
+                        <div class="jugadorLuchando  " class="d-flex justify-content-center align-items-center"></div>
+                    </div>
+
+                    <div id="extra" class="d-flex justify-content-center align-items-center vh20r">
+                        
+                    </div>
+                </div>
+                <div class="col-4" id="">
+                    <!-- PARA JUGADOR 2 -->
+                    <div class=" d-flex justify-content-center align-items-center titulo bg-transparent">
+                        <h5 class="">A.M.P.A.</h5>
+                    </div>
+
+                    <div class=" d-flex flex-direction-column justify-content-center flex-wrap central">
+                        <!-- <h1 class="text-light">pantalla de lucha</h1> -->
+                        <div class="d-flex justify-content-around align-items-center AMPA equipo" id="luchaAMPA"></div>
+                        <div class="jugadorLuchando jugador_2 " id="luchando2"></div>
+                    </div>
+
+                    <div id="puntua2" class="d-flex justify-content-center align-items-center vh20r">
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <!-- ------------------------------------------------------------FIN BATALLA E INICIO PANTALLA FINAL -->
+    <!-- <article id="final" class="vh" style="display: none;">
+
+    </article> -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./bootstrap/bootstrapJs/jquery-3.3.1.slim.min.js"></script>
+    <script src="./bootstrap/bootstrapJs/popper.min.js"></script>
+    <script src="./bootstrap/bootstrapJs/bootstrap.min.js"></script>
+    <!-- Optional JavaScript -->
+
+    <script src="./js/personaje.js"></script>
+    <script src="./js/jugador.js"></script>
+    <!-- <script src="./js/tools.js"></script> -->
+    <script src="./js/juego.js"></script>
+
+</body>
+
+</html>

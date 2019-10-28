@@ -1,0 +1,191 @@
+/* @media (orientation: portrait) {
+    html {
+      transform: rotate(-90deg);
+      transform-origin: left top;
+      width: 100vh;
+      overflow-x: hidden;
+      position: absolute;
+      top: 100%;
+      left: 0;
+    }
+  } */
+
+  /* CLASES PERSONALIZADAS */
+  .vh{
+    width: 100vw;
+    height: 100vh;
+  }
+  *{
+      padding: 0px!important;
+      margin: 0px!important;
+  }
+
+  .vh10{
+    width: 100%;
+    height: 5vh;
+    /* background: whitesmoke; */
+  }
+  .vh20{
+    width: 100%;
+    height: 25vh;
+    /* background: whitesmoke; */
+  }
+  .vh70{
+    width: 100%;
+      height: 70vh;
+      /* background: black; */
+  }
+  .vh95{
+    width: 100%;
+      height: 95vh;
+      /* background: black; */
+  }
+  /* PANTALLA INICIO */
+  #inicio{
+    background-image: url(../images/fondos/portada.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* PANTALLA SELECCIÓN */
+  /* persobajes seleccionados */
+  #cont-izda{
+    border-right: 5px solid whitesmoke;
+  }
+  .persoSeleccionados,
+  .persoSeleccionadosCAT{
+    width: 32%;
+    border-radius: 20px;
+    height: 90%;
+    border: 2px solid black;
+    background: wheat;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .divCreado{
+    width: 32%;
+    height: 32%;
+    /* background: red; */
+    border-radius: 20px;
+    border: 2px solid black;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  /* BATALLA */
+  .titulo{
+   height: 10%;
+  }
+  .central{
+    height: 70%;
+  }
+  .equipo{
+    height: 25%; 
+    width: 90%;
+  }
+  .extra{
+    height: 20%;
+  }
+  #batalla .divCreado{
+    width: 32%;
+    height: 90%;
+    border-radius: 20px;
+    border: 2px solid black;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .divCreado:hover{
+    border-color: greenyellow;
+    box-shadow: 0 0rem 2rem rgba(128, 230, 12, 0.719)!important;
+    background-size: 110% 110%;
+  }
+  #batalla .col-4{
+    height: 100vh;
+  }
+  .jugadorLuchando{
+    width: 60%;
+    height: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .bg-transparent{
+    background-color: transparent;
+  }
+  article#batalla{
+    background-image: url(../images/fondos/fondo_batalla.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  #centro{
+    background-image: url(../images/fondos/central.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  .h5, h5 {
+    font-size: 2rem!important;
+    color: red!important;
+    text-shadow: 2px 2px black;
+}@media (max-width: 900px){
+  .h5, h5 {
+    font-size: 1.3rem!important;;
+}
+}
+.vh20r{
+  width: 100%;
+  height: 20vh;
+}
+#puntua1,
+#puntua2{
+  font-size: 60px;
+}
+#extra{
+  font-size: 3rem;
+  color: red;
+  
+}@media (max-width: 900px){
+  #extra{
+    font-size: 1.3rem;
+    color: red;
+    
+  }
+}
+.absoluto{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+}
+#seleccion{
+  background-image: url(../images/fondos/versus-logo-vs-letras-deportes-competiciones-lucha_100456-149.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media (max-width: 900px){
+  #vsimage{
+    width: 8rem;
+    
+  }
+}
+#comenzar{
+  position: absolute;
+    left: 0px;
+    /* align-self: flex-end; */
+}
+.absoluto2{
+  position: absolute;
+  bottom:20rem;
+  left: 40rem;
+  transform: scale(3);
+}@media (max-width: 900px){
+  .absoluto2{
+    position: absolute;
+    bottom:5rem;
+    left: 15rem;
+    transform: scale(2);
+  }
+}
+ 
